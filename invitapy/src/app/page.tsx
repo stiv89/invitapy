@@ -1,103 +1,174 @@
-import Image from "next/image";
+'use client';
+
+import { useState } from 'react';
+import Link from 'next/link';
+import Drawer from '../components/Drawer';
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState('');
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const openDrawer = (plan: string) => {
+    setSelectedPlan(plan);
+    setDrawerOpen(true);
+  };
+
+  return (
+    <div>
+      {/* Hero */}
+      <section className="bg-gradient-to-r from-blue-500 to-purple-600 text-white py-20">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4">Invitaciones digitales que hacen brillar tu evento ✨</h1>
+          <p className="text-xl mb-8">Entrega 24–48h; RSVP, galería, countdown</p>
+          <div className="space-x-4">
+            <button onClick={() => openDrawer('')} className="bg-white text-blue-600 px-6 py-3 rounded font-semibold">Ver planes</button>
+            <Link href="/demo" className="bg-transparent border border-white px-6 py-3 rounded font-semibold">Ver demo</Link>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+
+      {/* Prueba social */}
+      <section className="py-16 bg-gray-100">
+        <div className="container mx-auto px-4 text-center">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+              <h3 className="text-2xl font-bold">24–48h de entrega</h3>
+            </div>
+            <div>
+              <h3 className="text-2xl font-bold">100% online</h3>
+            </div>
+            <div>
+              <h3 className="text-2xl font-bold">RSVP integrado</h3>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Funciones clave */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">Funciones clave</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="text-center">
+              <h3>Galería + música</h3>
+            </div>
+            <div className="text-center">
+              <h3>RSVP automático</h3>
+            </div>
+            <div className="text-center">
+              <h3>Cuenta regresiva</h3>
+            </div>
+            <div className="text-center">
+              <h3>Ubicaciones</h3>
+            </div>
+            <div className="text-center">
+              <h3>Regalos (Premium)</h3>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Planes */}
+      <section className="py-16 bg-gray-100">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">Planes</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="bg-white p-8 rounded shadow">
+              <h3 className="text-2xl font-bold">Esencial</h3>
+              <p className="text-xl">Gs. 200.000</p>
+              <ul className="mt-4 space-y-2">
+                <li>Invitación web</li>
+                <li>Galería</li>
+                <li>Confirmación de asistencia</li>
+                <li>Música a elección</li>
+                <li>Gestión automática de asistencia</li>
+                <li>Vista para sugerir música</li>
+                <li>Cuenta atrás</li>
+              </ul>
+              <button onClick={() => openDrawer('Esencial')} className="mt-4 bg-blue-600 text-white px-4 py-2 rounded">Solicitar</button>
+            </div>
+            <div className="bg-white p-8 rounded shadow">
+              <h3 className="text-2xl font-bold">Premium</h3>
+              <p className="text-xl">Gs. 350.000</p>
+              <ul className="mt-4 space-y-2">
+                <li>Todo lo del Esencial</li>
+                <li>Galería ampliada (hasta 15 fotos)</li>
+                <li>“Agendar” (save the date)</li>
+                <li>Colores y tipografía personalizados</li>
+                <li>Vista para regalos/datos bancarios</li>
+              </ul>
+              <button onClick={() => openDrawer('Premium')} className="mt-4 bg-blue-600 text-white px-4 py-2 rounded">Solicitar</button>
+            </div>
+          </div>
+          <p className="text-center mt-8">Vigencia 5 días post-evento, entrega 24–48h</p>
+        </div>
+      </section>
+
+      {/* Cómo funciona mini */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">Cómo funciona</h2>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div className="text-center">
+              <h3>Paso 1</h3>
+              <p>Elegí plan</p>
+            </div>
+            <div className="text-center">
+              <h3>Paso 2</h3>
+              <p>Formulario</p>
+            </div>
+            <div className="text-center">
+              <h3>Paso 3</h3>
+              <p>100% pago</p>
+            </div>
+            <div className="text-center">
+              <h3>Paso 4</h3>
+              <p>Entrega/publicación</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ mini */}
+      <section className="py-16 bg-gray-100">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">FAQ</h2>
+          <div className="space-y-4">
+            <details>
+              <summary>¿La estructura se puede modificar?</summary>
+              <p>No</p>
+            </details>
+            <details>
+              <summary>¿Qué tengo que enviar?</summary>
+              <p>Colores, fotos, música, ubicaciones, fechas/horarios, momentos</p>
+            </details>
+            <details>
+              <summary>¿Formas de pago?</summary>
+              <p>50% para iniciar y 50% contra entrega</p>
+            </details>
+            <details>
+              <summary>¿Cuánto tarda?</summary>
+              <p>24–48h</p>
+            </details>
+            <details>
+              <summary>¿Vigencia?</summary>
+              <p>Hasta 5 días después del evento</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      {/* Contacto */}
+      <section className="py-16">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-8">Contacto</h2>
+          <p>Email: info@invitapy.com</p>
+          <p>WhatsApp: +595 XXX XXX XXX</p>
+          <p>Checklist: colores, fotos, ubicaciones, fecha/hora</p>
+        </div>
+      </section>
+
+      <Drawer isOpen={drawerOpen} onClose={() => setDrawerOpen(false)} plan={selectedPlan} />
     </div>
   );
 }
