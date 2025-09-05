@@ -36,7 +36,7 @@ export default function Precios() {
           <ul className="mt-4 space-y-2">
             <li>Todo lo del Esencial</li>
             <li>Galería ampliada (hasta 15 fotos)</li>
-            <li>"Agendar" (save the date)</li>
+            <li>&quot;Agendar&quot; (save the date)</li>
             <li>Colores y tipografía personalizados</li>
             <li>Vista para regalos/datos bancarios</li>
           </ul>
